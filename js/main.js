@@ -40,6 +40,7 @@ var CPN = (function($){
 		};
     };
 
+    // related links js
     var relatedLinks = {
     	current: 0,
     	container: $('.related-links-inner-wrapper'),
@@ -92,6 +93,7 @@ var CPN = (function($){
 
     };
 
+    // accordion js
     var accordion = {
     	duration: 500,
     	init: function() {
@@ -100,8 +102,6 @@ var CPN = (function($){
 
     		$('body').on('click', '.accordion h2', function(event){
     			event.preventDefault();
-
-    			console.log(event);
 
     			var parent = $(this).parent('.slider');
 
