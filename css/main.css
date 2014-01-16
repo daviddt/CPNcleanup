@@ -306,6 +306,7 @@ input:focus {
 }
 
 	#header.fixed {
+		padding-top:0;
 		box-shadow:3px 3px 3px #E7E7E7;
 		z-index:200;
 		position:fixed;
@@ -510,7 +511,7 @@ input:focus {
 }
 
 #breadcrumb.fixed {
-	margin-top:15rem;
+	margin-top:14rem;
 }
 
 	#breadcrumb ul li {
