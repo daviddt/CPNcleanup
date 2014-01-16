@@ -30,15 +30,23 @@ var CPN = (function($){
 
 		// if more then 1 related link, init related links animation
 		if ($('#related-links ul').length > 1) {
-
 			relatedLinks.init();
-			
 		};
 
+        // accordion
 		if ($('.accordion').length) {
 			accordion.init();
 		};
+
+        //showcase 
+        $('#showcase').click(function(event){
+            event.preventDefault();
+            if (!$('#showcase-container').length) {
+                showcase.init($('#showcase').data('showcase'));
+            };
+        });
     };
+        
 
     // related links js
     var relatedLinks = {
@@ -121,6 +129,89 @@ var CPN = (function($){
 
     		});
     	}
+    };
+
+    // showcase
+    var showcase = {
+        current: 0,
+        items: null,
+        init: function (json) {
+            $.get(json, function(data) {
+                showcase.createHTML(JSON.parse(data));
+            });
+        },
+        createHTML: function(stories) {
+            this.items = stories;
+            console.log(stories);
+            var html = '<div id="showcase-container">';
+                html += '<div class="inner-wrapper"><div class="gallery-container">';
+                html += '<h1>'+stories.channel.item[0].copyright+'</h1>';
+                html += '<div class="image-wrapper"><div class="overlay"></div><img src="'+stories.channel.item[0]['content']['@url']+'"><p class="description">'+stories.channel.item[0].description+'</p></div>';
+                html += '<div class="gallery-info clear"><p class="about">ABOUT THIS PICTURE</p><p class="copyright">'+stories.channel.item[0].copyright+'</p><div class="gallery-navigation"><div class="counter"><span class="arrow-left"></span><span class="arrow-right"></span><span class="current">01</span><span class="of">OF</span><span class="total">'+stories.channel.item.length+'</span></div></div></div>';
+                html += '</div></div></div>';
+
+            $('.wrapper.main').after(html);
+
+            this.bindGallery();
+            this.showShowcase();
+        },
+        bindGallery: function() {
+
+            var that = this;
+
+            $('body').on('mouseenter', '#showcase-container .about', function(){
+                $('#showcase-container .image-wrapper').addClass('active');
+            });
+
+            $('body').on('mouseleave', '#showcase-container .about', function(){
+                $('#showcase-container .image-wrapper').removeClass('active');
+            });
+
+            $('body').on('click', '#showcase-container .arrow-left', function(){
+                if (that.current > 0) {
+                    that.current--;
+                    that.setNewImage(that.current);
+                };
+            });
+
+             $('body').on('click', '#showcase-container .arrow-right', function(){
+                if (that.current < that.items.channel.item.length) {
+                    that.current++;
+                    that.setNewImage(that.current);
+                };
+            });
+
+        },
+        setNewImage: function(position) {
+
+            var oldImage = $('#showcase-container .image-wrapper img');
+            var newImg = $('<img style="opacity: 0">'); 
+            newImg.attr('src', this.items.channel.item[position]['content']['@url']);
+            newImg.appendTo('.image-wrapper');
+
+            newImg.animate({'opacity': 1}, 500, function(){
+                oldImage.remove();
+            });
+
+            if (this.current < 9) {
+                $('#showcase-container .current').text('0' + (this.current + 1)); 
+            } else {
+                $('#showcase-container .current').text(this.current); 
+            }
+
+            $('#showcase-container .description').text(this.items.channel.item[position].description);
+            $('#showcase-container .gallery-info .copyright').text(this.items.channel.item[position].copyright);
+        },
+        showShowcase: function() {
+           $('#showcase-container').animate({'top': '50px', 'bottom': 0}, 1000, function(){
+                $(this).css('position', 'absolute');
+                $('html, body').css({
+                    'overflow-y': 'hidden',
+                    height: $( window ).height()
+                });
+           });
+           $("html, body").animate({ scrollTop: 0 }, 1000);
+        }
     };
 
     // Function calls
