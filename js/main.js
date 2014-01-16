@@ -1,7 +1,7 @@
 // name space
 var CPN = (function($){
 
-    // Initialisation Functions (Don't forget var)
+    // Initialisation Functions
     var init = function () {
         // init stuff
     };
@@ -45,7 +45,7 @@ var CPN = (function($){
                 showcase.init($('#showcase').data('showcase'));
             };
         });
-    };
+    }; // end dom init
         
 
     // related links js
@@ -65,7 +65,7 @@ var CPN = (function($){
     				that.current++;
     			} else {
     				that.container.css({'left': 0});
-    				that.current = 0
+    				that.current = 0;
     			}
     			$('#related-links .dots a').removeClass('active');
     		    $('#related-links .dots a').eq(that.current).addClass('active');
@@ -143,7 +143,6 @@ var CPN = (function($){
         },
         createHTML: function(stories) {
             this.items = stories;
-            console.log(stories);
             var html = '<div id="showcase-container">';
                 html += '<div class="inner-wrapper"><span class="close">X CLOSE</span><div class="gallery-container">';
                 html += '<h1>'+stories.channel.item[0].copyright+'</h1>';
@@ -244,9 +243,7 @@ var CPN = (function($){
 
     });
 
-    // if you want to call those functions 
-    // some time later from outside of app, 
-    // return them:
+    // functions to return, to call outside of this scope
     return {
     	relatedLinks: relatedLinks
     };
