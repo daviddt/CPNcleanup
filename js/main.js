@@ -135,6 +135,7 @@ var CPN = (function($){
     var showcase = {
         current: 0,
         items: null,
+        prevPosition: 0,
         init: function (json) {
             $.get(json, function(data) {
                 showcase.createHTML(JSON.parse(data));
@@ -144,7 +145,7 @@ var CPN = (function($){
             this.items = stories;
             console.log(stories);
             var html = '<div id="showcase-container">';
-                html += '<div class="inner-wrapper"><div class="gallery-container">';
+                html += '<div class="inner-wrapper"><span class="close">X CLOSE</span><div class="gallery-container">';
                 html += '<h1>'+stories.channel.item[0].copyright+'</h1>';
                 html += '<div class="image-wrapper"><div class="overlay"></div><img src="'+stories.channel.item[0]['content']['@url']+'"><p class="description">'+stories.channel.item[0].description+'</p></div>';
                 html += '<div class="gallery-info clear"><p class="about">ABOUT THIS PICTURE</p><p class="copyright">'+stories.channel.item[0].copyright+'</p><div class="gallery-navigation"><div class="counter"><span class="arrow-left"></span><span class="arrow-right"></span><span class="current">01</span><span class="of">OF</span><span class="total">'+stories.channel.item.length+'</span></div></div></div>';
@@ -181,6 +182,10 @@ var CPN = (function($){
                 };
             });
 
+            $('body').on('click', '#showcase-container .close', function(){
+                that.closeGallery();
+            });
+
         },
         setNewImage: function(position) {
 
@@ -210,7 +215,22 @@ var CPN = (function($){
                     height: $( window ).height()
                 });
            });
+           this.prevPosition = $(window).scrollTop();
            $("html, body").animate({ scrollTop: 0 }, 1000);
+        },
+        closeGallery: function() {
+            var that = this;
+
+            $('html, body').css({
+                'overflow-y': 'visible',
+                height: 'auto'
+            });
+            $('#showcase-container').css('position', 'fixed');
+            $('#showcase-container').animate({'top': '100%', 'bottom': '200%'}, 1000, function(){
+               $(this).remove();
+            });
+
+            $("html, body").animate({ scrollTop: that.prevPosition }, 1000);
         }
     };
 

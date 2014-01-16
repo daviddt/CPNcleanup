@@ -566,19 +566,23 @@ input:focus {
 	background-color:#000;
 }
 
-.ceos.news #visual {
+.ceos.news #visual,
+.ceos.news #showcase-container .inner-wrapper .close {
 	background-color:#ec7a08;
 }
 
-.ceos.education #visual {
+.ceos.education #visual,
+.ceos.education #showcase-container .inner-wrapper .close  {
 	background-color:#006fb4;
 }
 
-.ceos.product #visual {
+.ceos.product #visual,
+.ceos.product #showcase-container .inner-wrapper .close  {
 	background-color:#6a963b;
 }
 
-.ceos.inspiration #visual {
+.ceos.inspiration #visual,
+.ceos.inspiration #showcase-container .inner-wrapper .close {
 	background-color:#a31a7e;
 }
 
@@ -592,25 +596,29 @@ input:focus {
 
 	.ceos.news .wrapper.head,
 	.ceos.news #header.fixed,
-	.ceos.news .accordion .slider.active h2 span {
+	.ceos.news .accordion .slider.active h2 span,
+	.ceos.news #showcase-container {
 		border-color:#ec7a08;
 	}
 
 	.ceos.education .wrapper.head,
 	.ceos.education #header.fixed,
-	.ceos.education .accordion .slider.active h2 span {
+	.ceos.education .accordion .slider.active h2 span,
+	.ceos.education #showcase-container {
 		border-color:#006fb4;
 	}
 
 	.ceos.product .wrapper.head,
 	.ceos.product #header.fixed,
-	.ceos.product .accordion .slider.active h2 span {
+	.ceos.product .accordion .slider.active h2 span,
+	.ceos.product #showcase-container {
 		border-color:#6a963b;
 	}
 
 	.ceos.inspiration .wrapper.head,
 	.ceos.inspiration #header.fixed,
-	.ceos.inspiration .accordion .slider.active h2 span {
+	.ceos.inspiration .accordion .slider.active h2 span,
+	.ceos.inspiration #showcase-container {
 		border-color:#a31a7e;
 	}
 
@@ -696,6 +704,22 @@ input:focus {
 	bottom:200%;
 	background-color:#fff;
 }
+
+	#showcase-container .inner-wrapper {
+		position:relative;
+		background-color:#fff;
+	}
+
+		#showcase-container .inner-wrapper .close {
+			padding: 0.5rem 1.3rem;
+			color: #fff;
+			background-color: #A31A7E;
+			font-size: 1.2rem;
+			position: absolute;
+			top: -4rem;
+			right: 7.6rem;
+			cursor:pointer;
+		}
 
 	#showcase-container .image-wrapper {
 		width: 81rem;
