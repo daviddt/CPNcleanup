@@ -21,15 +21,23 @@ var CPN = (function($){
 		});
 
         // main navigation, add class on hover
-		$("#main-navigation ul li").hover(function() {
-		        $(this).addClass("hover");
-		    }, function() {
-		    	$(this).removeClass("hover");
-		    }
-		);
+		$("#main-navigation > ul > li > a").click(function(event) {
+            $('#main-navigation > ul > li > a').not(this).removeClass('clicked');
+            console.log(1);
+            event.preventDefault();
+		    $(this).toggleClass("clicked");
+        });
+
+        $("body").click(function() {
+            $("#main-navigation > ul > li > a").removeClass('clicked');
+        });
+
+        $("#main-navigation > ul > li > a").click(function(event) {
+            event.stopPropagation();
+        });
 
 		// if more then 1 related link, init related links animation
-		if ($('#related-links ul').length > 1) {
+		if ($('.related-links ul').length > 1) {
 			relatedLinks.init();
 		};
 
@@ -39,10 +47,10 @@ var CPN = (function($){
 		};
 
         //showcase 
-        $('#showcase').click(function(event){
+        $('.component.showcase').click(function(event){
             event.preventDefault();
             if (!$('#showcase-container').length) {
-                showcase.init($('#showcase').data('showcase'));
+                showcase.init($('.component.showcase').data('showcase'));
             };
         });
     }; // end dom init
@@ -52,7 +60,7 @@ var CPN = (function($){
     var relatedLinks = {
     	current: 0,
     	container: $('.related-links-inner-wrapper'),
-    	relatedLinksLength: $('#related-links ul').length,
+    	relatedLinksLength: $('.related-links ul').length,
     	init: function () {
     		this.setNavigation();
     		this.startAnimation();
@@ -67,8 +75,8 @@ var CPN = (function($){
     				that.container.css({'left': 0});
     				that.current = 0;
     			}
-    			$('#related-links .dots a').removeClass('active');
-    		    $('#related-links .dots a').eq(that.current).addClass('active');
+    			$('.related-links .dots a').removeClass('active');
+    		    $('.related-links .dots a').eq(that.current).addClass('active');
     		}, 5000);
     	},
     	animateTo: function (to) {
@@ -87,12 +95,12 @@ var CPN = (function($){
     		dots += '</div>';
 
     		$('.related-links-outer-wrapper').after(dots);
-    		$('#related-links .dots a').eq(0).addClass('active');
+    		$('.related-links .dots a').eq(0).addClass('active');
 
-    		$('body').on('click', '#related-links .dots a', function(event){
+    		$('body').on('click', '.related-links .dots a', function(event){
     			event.preventDefault();
 
-    			$('#related-links .dots a').removeClass('active');
+    			$('.related-links .dots a').removeClass('active');
     			$(this).addClass('active');
 
     			relatedLinks.animateTo($(this).data('link'));
@@ -138,10 +146,12 @@ var CPN = (function($){
         prevPosition: 0,
         init: function (json) {
             $.get(json, function(data) {
+                console.log(data);
                 showcase.createHTML(JSON.parse(data));
             });
         },
         createHTML: function(stories) {
+            this.current = 0;
             this.items = stories;
             var html = '<div id="showcase-container">';
                 html += '<div class="inner-wrapper"><span class="close">X CLOSE</span><div class="gallery-container">';
@@ -159,29 +169,29 @@ var CPN = (function($){
 
             var that = this;
 
-            $('body').on('mouseenter', '#showcase-container .about', function(){
+            $('#showcase-container .about').on('mouseenter', function(){
                 $('#showcase-container .image-wrapper').addClass('active');
             });
 
-            $('body').on('mouseleave', '#showcase-container .about', function(){
+            $('#showcase-container .about').on('mouseleave', function(){
                 $('#showcase-container .image-wrapper').removeClass('active');
             });
 
-            $('body').on('click', '#showcase-container .arrow-left', function(){
+            $('#showcase-container .arrow-left').on('click', function(){
                 if (that.current > 0) {
                     that.current--;
                     that.setNewImage(that.current);
                 };
             });
 
-             $('body').on('click', '#showcase-container .arrow-right', function(){
+             $('#showcase-container .arrow-right').on('click', function(){
                 if (that.current < that.items.channel.item.length) {
                     that.current++;
                     that.setNewImage(that.current);
                 };
             });
 
-            $('body').on('click', '#showcase-container .close', function(){
+            $('#showcase-container .close').on('click', function(){
                 that.closeGallery();
             });
 

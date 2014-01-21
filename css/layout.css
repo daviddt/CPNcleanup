@@ -32,7 +32,6 @@ time, mark, audio, video {
     background:transparent;
 }
 
-/* Do we really need this? Poor performance? -????????? */
 *,
 *:after,
 *:before {
@@ -233,6 +232,7 @@ input:focus {
 	}
 
 	.related-links-inner-wrapper {
+		left:0;
 		position:relative;
 		width: 2000px;
 		-webkit-transition: left 0.5s;
@@ -407,7 +407,8 @@ input:focus {
 			border-bottom: 3px solid;
 		}
 
-			#main-navigation > ul > li.active > a {
+			#main-navigation > ul > li.active > a,
+			#main-navigation > ul > li:hover > a {
 				color:#cc0000;
 			}
 
@@ -477,7 +478,7 @@ input:focus {
 		border: 1px solid #ccc;
 	}
 
-	#main-navigation > ul > li:hover > ul {
+	#main-navigation > ul > li .clicked + ul {
 		display:block;
 	}
 
