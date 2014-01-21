@@ -11,11 +11,28 @@ INSPIRATION:#a31a7e;
 
 */
 
-* {
-	margin:0;
-	padding:0;
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
 }
 
+/* Do we really need this? Poor performance? -????????? */
 *,
 *:after,
 *:before {
@@ -25,6 +42,7 @@ INSPIRATION:#a31a7e;
 }
 
 /* html element 62.5% font-size for REM use */
+
 html {
 	font-size:62.5%;
 }
@@ -39,7 +57,6 @@ article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section { 
 	display:block;
 }
-
 
 table {
     border-collapse:collapse;
@@ -84,11 +101,9 @@ a {
 a:hover {
 	color:#d2232a;
 }
-a:focus {
-	outline:0;
-}
 a:hover,
-a:active {
+a:active,
+a:focus {
 	outline:0;
 }
 input:focus {
@@ -198,13 +213,13 @@ input:focus {
 	     SOCIAL
 	\*------------*/
 
-	#social img {
+	.social img {
 		float:left;
 		border:1px solid #ccc;
 		border-radius:.5rem;
 	}
 
-	#social p {
+	.social p {
 		margin-top: 1.5rem;
 		padding-left: 8.5rem;
 	}
@@ -227,50 +242,57 @@ input:focus {
 		transition: left 0.5s;
 	}
 	
-	#related-links ul {
+	.related-links ul {
 		width: 29rem;
 		float: left;
 	}
 
-	#related-links li {
+	.related-links li {
 		list-style:none;
 		margin-bottom:1rem;
 	}
 
-		#related-links li div {
+		.related-links li div {
 			background-color:#eee;
 			padding:0.2rem 0.2rem 0.2rem 12rem;
 			height:7.1rem;
 		}
 
-		#related-links li h2 {
+		.related-links li h2 {
 			margin: 0.3rem 0;
 			font-size:1.2rem;
 		}
 
-		#related-links li p {
+		.related-links li p {
 			color:#666;
 		}
 
-			#related-links li h2.education {
+			.related-links li h2.education {
 				color:#006fb4;;
 			}
 
-	#related-links img {
+	.related-links img {
 		float:left;
 		width:11rem;
+	}
+	
+	/*-----------------*\
+	    RELATED LINKS
+	\*-----------------*/
+	.external-links li {
+		margin-bottom: 5px;
 	}
 
 	/*-----------------*\
 	   BIO
 	\*-----------------*/
 
-	#bio img {
+	.bio img {
 		float:left;
 		padding-right:2rem;
 	}
 
-	#bio p {
+	.bio p {
 		line-height:180%;
 	}
 
@@ -279,18 +301,18 @@ input:focus {
 	\*-----------------*/
 
 
-	#showcase h1 {
+	.showcase h1 {
 		float:left;
 	}
 
-	#showcase .image-count {
+	.showcase .image-count {
 		text-align:right;
 		padding-top:.5rem;
 	}
 
-	#showcase h1:hover,
-	#showcase .image-count:hover,
-	#showcase img:hover {
+	.showcase h1:hover,
+	.showcase .image-count:hover,
+	.showcase img:hover {
 		text-decoration: underline;
 		cursor:pointer;
 	}
@@ -405,25 +427,24 @@ input:focus {
 				border-color:#a31a7e;
 			}
 
-	#main-navigation .sub-nav {
+	#main-navigation ul ul {
 		display:none;
 		text-align:left;
 		padding:0.5rem 1rem;
 		position:absolute;
 		left:0;
 		width:18rem;
-		top:2.3rem;
-		border-radius:5px;
+		top:3.1rem;
+		border-radius: 0 7px 7px 7px;
 		z-index:100;
-
 		box-shadow: 0px 3px 5px #b2b2b2;
 	}
 
-		#main-navigation .sub-nav li {
+		#main-navigation ul ul li {
 			padding: 0.5rem 1rem;
 		}
 
-		#main-navigation .sub-nav li:not(:last-of-type) {
+		#main-navigation ul ul li:not(:last-of-type) {
 			border-bottom: 1px solid white;	
 		}	
 
@@ -443,7 +464,7 @@ input:focus {
 				background-color:#a31a7e;
 			}
 
-			#main-navigation .sub-nav li a {
+			#main-navigation ul ul li a {
 				color:#fff;
 			}
 
