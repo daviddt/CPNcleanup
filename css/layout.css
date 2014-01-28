@@ -105,6 +105,9 @@ a:active,
 a:focus {
 	outline:0;
 }
+a img {
+	display: block;
+}
 input:focus {
 	outline:0;
 	border:1px solid #04A4CC;
@@ -172,6 +175,41 @@ input:focus {
 
 	.article a {
 		color:#d2232a;
+	}
+	/*------------------------------------*\
+    ARTICLE IMAGE
+	\*------------------------------------*/
+	.image {
+		float: left;
+		width: 250px;
+		border: 1px solid #ccc;	
+		margin-bottom: 18px;
+		margin-right: 18px;
+	}
+	.image a {
+		display: block;
+		margin: 15px 15px 0 15px; 
+	}
+	.image span {
+		display: block;
+		margin: 5px 15px;
+		color: #999;
+	}
+	.image p {
+		background-color: #eee;	
+		margin: 0;
+		padding: 10px 15px;
+		font-style: italic;
+		float: left;
+	}
+	.full {
+		width: auto;
+		margin-right: 0;
+	}
+	.right {
+		float: right;
+		margin-right: 0;
+		margin-left: 18px;
 	}
 
 
