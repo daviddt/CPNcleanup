@@ -8,6 +8,7 @@ NEWS:#ec7a08;
 PRODUCT:#6a963b;
 EDUCATION:#006fb4;
 INSPIRATION:#a31a7e;
+CANON RED: #d2232a;
 
 */
 
@@ -89,6 +90,10 @@ input, select {
     *zoom:1;
 }
 
+ul {
+	padding-left:1.5rem;
+}
+
 img {
 	max-width:100%;
 	vertical-align:bottom;
@@ -111,6 +116,10 @@ a img {
 input:focus {
 	outline:0;
 	border:1px solid #04A4CC;
+}
+sup {
+	font-size: 0.7em;	
+	vertical-align: super;			
 }
 
 .inner-wrapper {
@@ -167,41 +176,40 @@ input:focus {
 
 	.article h2 {
 		font-size:1.4rem;
-	}
-
-	.article ul {
-		padding-left:1.5rem;
+		line-height: 200%;
+		margin: 1rem 0;
 	}
 
 	.article a {
 		color:#d2232a;
 	}
-	/*------------------------------------*\
+	/*-------------*\
     ARTICLE IMAGE
-	\*------------------------------------*/
+	\*-------------*/
 	.image {
 		float: left;
 		width: 250px;
 		border: 1px solid #ccc;	
+		padding-top: 15px;
 		margin-bottom: 18px;
 		margin-right: 18px;
 	}
-	.image a {
-		display: block;
-		margin: 15px 15px 0 15px; 
-	}
-	.image span {
-		display: block;
-		margin: 5px 15px;
-		color: #999;
-	}
-	.image p {
-		background-color: #eee;	
-		margin: 0;
-		padding: 10px 15px;
-		font-style: italic;
-		float: left;
-	}
+		.image a {
+			display: block;
+			margin: 0 15px 0 15px; 
+		}
+		.image span {
+			display: block;
+			margin: 5px 15px;
+			color: #999;
+		}
+		.image p {
+			background-color: #eee;	
+			margin: 0;
+			padding: 10px 15px;
+			font-style: italic;
+			float: left;
+		}
 	.full {
 		width: auto;
 		margin-right: 0;
@@ -211,7 +219,28 @@ input:focus {
 		margin-right: 0;
 		margin-left: 18px;
 	}
-
+	/*-------------*\
+    KITBAG LIST
+	\*-------------*/
+	.gear_list dt {
+		font-weight: bold;	
+	}
+	.gear_list li {
+		list-style: none;		
+	}
+	/*-------------*\
+    FOOTNOTE
+	\*-------------*/
+	.footnote {
+		border-top: 1px solid #666; 			
+		width: 100%;
+		padding-left: 0;
+	}
+		.footnote li {
+			list-style: none;
+			margin: 14px 0;
+			color: #999;
+		}
 
 /*------------------------------------*\
     SIDEBAR
@@ -389,6 +418,7 @@ input:focus {
 
 #top-navigation ul {
 	text-align:right;
+	padding-left: 0;
 }
 
 	#top-navigation ul li {
@@ -425,7 +455,9 @@ input:focus {
 	margin:4rem 3rem 0 3rem;
 	width:45rem;
 }
-
+	#main-navigation ul {
+		padding-left: 0;	
+	}
 	#main-navigation li {
 		list-style:none;
 	}
@@ -447,7 +479,7 @@ input:focus {
 
 			#main-navigation > ul > li.active > a,
 			#main-navigation > ul > li:hover > a {
-				color:#cc0000;
+				color:#d2232a;
 			}
 
 			#main-navigation > ul > li.news > a {
@@ -525,7 +557,7 @@ input:focus {
 \*------------------------------------*/
 
 .accordion {
-	border-bottom: 1px dotted #ccc;
+	border-bottom: 1px dotted #666;
 }
 
 .accordion h2 {
@@ -534,9 +566,10 @@ input:focus {
 	padding-left:6rem;
 	padding-top:1.5rem;
 	margin-bottom:1.5rem;
-	border-top:1px dotted #ccc;
+	border-top:1px dotted #666;
 	background: url("../img/assets/cross_plus.png") no-repeat scroll 20px 13px;
 	cursor:pointer;
+	line-height: normal;
 }
 
 	.accordion .slider.active h2 {
@@ -544,7 +577,7 @@ input:focus {
 	}
 
 		.accordion .slider.active h2 span {
-			border-bottom:2px solid black;
+			border-bottom:2px solid #d2232a;
 		}
 
 	.accordion .content {
@@ -568,6 +601,7 @@ input:focus {
 
 #breadcrumb ul {
 	margin:1rem 0;
+	padding-left: 0;
 }
 
 #breadcrumb.fixed {
