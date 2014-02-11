@@ -99,7 +99,7 @@ img {
 	vertical-align:bottom;
 }
 a {
-	color:#444;
+	color:#666;
 	text-decoration:none;
 }
 a:hover {
@@ -435,8 +435,11 @@ sup {
 	}
 
 		#top-navigation ul li a {
-			padding:0 2rem;
+			padding: 0 2rem;
 		}
+	.customisation {
+		display: none;
+	}			
 
 .main-navigation-wrapper {
 	margin: 1rem 0 1.5rem 0;
@@ -452,8 +455,8 @@ sup {
 #main-navigation {
 	display:inline-block;
 	vertical-align: top;
-	margin:4rem 3rem 0 3rem;
-	width:45rem;
+	margin:4rem 0 0 1rem;
+	width:51rem;
 }
 	#main-navigation ul {
 		padding-left: 0;	
@@ -464,10 +467,10 @@ sup {
 
 	#main-navigation > ul > li {
 		position:relative;
-		width: 21%;
+		width: 22%;
 		text-align: center;
 		float: left;
-		margin: 0 2%;
+		margin: 0 1%;
 	}
 
 		#main-navigation > ul > li > a {
@@ -546,6 +549,7 @@ sup {
 		border-radius: 5px;
 		box-shadow: none;
 		border: 1px solid #ccc;
+		width: 17rem;
 	}
 
 	#main-navigation > ul > li .clicked + ul {
